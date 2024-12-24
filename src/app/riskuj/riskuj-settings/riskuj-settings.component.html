@@ -1,0 +1,78 @@
+<div class="flex flex-col w-96 m-auto text-center gap-10">
+    <div>
+        <h2>Načíst otazky v CSV</h2>
+        <input type="file" (change)="onFileSelected($event)" accept=".csv"/>
+        <button *ngIf="parsedData.length > 0 && !showData" (click)="showData=true">Ukazat data</button>
+        <button *ngIf="showData" (click)="showData=false">skryt data</button>
+        <!-- Tabulka pro zobrazení načtených dat -->
+        <table *ngIf="parsedData.length > 0 && showData">
+            <thead>
+            <tr>
+                <th>Kategorie</th>
+                <th>Cena</th>
+                <th>Otázka</th>
+                <th>Odpověď 1</th>
+                <th>Odpověď 2</th>
+                <th>Odpověď 3</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let row of parsedData">
+                <td>{{ row.kategorie }}</td>
+                <td>{{ row.cena }}</td>
+                <td>{{ row.otazka }}</td>
+                <td>{{ row.odpoved1 }}</td>
+                <td>{{ row.odpoved2 }}</td>
+                <td>{{ row.odpoved3 }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="team-creator">
+        <h2>Vytvořit tým</h2>
+
+        <form (submit)="addTeam()">
+            <!-- Input pro název týmu -->
+            <label for="team-name">Jméno týmu:</label>
+            <input id="team-name" [(ngModel)]="teamName" name="teamName" required placeholder="Zadejte jméno týmu"/>
+
+            <!-- Výběr barvy týmu -->
+            <label for="team-color">Barva týmu:</label>
+            <select id="team-color" [(ngModel)]="teamColor" name="teamColor" required>
+                <option *ngFor="let color of colors" [value]="color">{{ color }}</option>
+            </select>
+
+            <!-- Tlačítko pro přidání týmu -->
+            <button type="submit" [disabled]="!teamName || !teamColor">Přidat tým</button>
+        </form>
+
+        <!-- Zobrazení seznamu týmů -->
+        <div *ngIf="teams.length > 0" class="team-list">
+            <h4>Seznam týmů:</h4>
+            <ul>
+                <li *ngFor="let team of teams">
+                    <span [style.color]="team.color">{{ team.name }}</span> ({{ team.color }})
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <label for="deduct">Odecitat body pri spatne odpovedi</label>
+        <input
+            type="checkbox"
+            id="deduct"
+            [(ngModel)]="deduct"
+            name="deduct"
+        /></div>
+    <div>
+        <label for="changeAfterLose">stridat se az potom co to tym zkazi </label>
+        <input
+            type="checkbox"
+            id="changeAfterLose"
+            [(ngModel)]="changeAfterLose"
+            name="changeAfterLose"
+        /></div>
+    <button (click)="play()" class="bg-secondary">Spustit</button>
+
+</div>

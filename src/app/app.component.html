@@ -1,0 +1,20 @@
+<div class="w-full h-screen bg-bg flex justify-center flex-col">
+    <div class="w-full p-10">
+        <h1 class="text-center my-auto">Riskuj</h1>
+    </div>    <!--  &lt;!&ndash;start&ndash;&gt;-->
+    <div class="flex justify-center" *ngIf="getState()==='start'">
+        <button (click)="play()" class="bg-secondary">Hrát</button>
+    </div>
+    <!-- settings -->
+    <div *ngIf="getState()==='settings'">
+        <app-riskuj-settings></app-riskuj-settings>
+    </div>
+    <!-- game -->
+    <div *ngIf="getState()==='game'">
+        <app-riskujgame></app-riskujgame>
+    </div>
+    <!-- results -->
+    <div *ngIf="getState()==='results'">
+        <app-riskuj-results></app-riskuj-results>
+    </div>
+</div>

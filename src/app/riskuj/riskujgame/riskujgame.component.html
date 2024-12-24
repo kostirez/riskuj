@@ -1,0 +1,36 @@
+<div class="relative">
+    <div class="w-full p-10">
+        <div *ngFor="let row of rows"
+             class="flex flex-row w-full h-40 justify-between bg-primary text-white gap-5 mt-5">
+            <div class="flex flex-col">
+                <h3 class="w-[300px] text-center text-xl my-auto">{{row.category}}</h3>
+            </div>
+            <div *ngFor="let box of row.questionBoxes"
+                 (click)="clickQuestion(row.category, box)"
+                 class="flex flex-col w-full bg-secondary text-white cursor-pointer">
+                <div class="my-auto bg-secondary text-center text-2xl"
+                     [ngClass]="box.status == 'done' ? 'bg-white' : 'bg-secondary'"
+                >{{box.price}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="min-w-[400px]">
+        <div class="flex flex-row justify-around">
+            <div *ngFor="let team of teams; let index = index"
+                 class=" px-5 py-3 text-center"
+                 [ngClass]=" index == getTeamIndexOnTurn()? 'bg-primary' : 'bg-secondary'">
+                <h5>{{team.name}}</h5>
+                <h5 class="text-secondary">{{team.points}}</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute top-0 w-full h-full" *ngIf="openQuestionDialog">
+        <app-question-detail
+            [category]="selectedCategory"
+            [price]="selectedPrice"
+            (result)="resolveQuestion($event.teamIndex, $event.price)">
+        </app-question-detail>
+    </div>
+</div>
