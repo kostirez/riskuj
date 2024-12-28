@@ -6,15 +6,23 @@
 @layer base {
     /* Globální styly pro HTML elementy */
     h1 {
-        @apply text-4xl font-bold text-primary;
+        @apply text-8xl font-bold text-primary;
     }
 
     h2 {
-        @apply text-2xl font-bold text-primary;
+        @apply text-4xl font-bold text-primary;
     }
 
     h3 {
+        @apply text-2xl font-bold text-primary;
+    }
+
+    h4 {
         @apply text-2xl font-bold text-secondary;
+    }
+
+    h5 {
+        @apply text-xl font-bold text-secondary;
     }
 
     p {
@@ -22,10 +30,34 @@
     }
 
     button {
-        @apply bg-secondary text-white font-semibold py-2 px-4 m-3 rounded hover:bg-secondary;
+        @apply py-2 px-4 m-3 rounded ;
+    }
+
+    .btn-main {
+        @apply py-5 px-10 bg-bg-dark text-primary text-2xl font-bold hover:bg-bg-light;
+    }
+
+    .btn-secondary {
+        @apply py-3 px-6 bg-bg-dark text-primary text-xl font-semibold hover:bg-bg-light;
+    }
+
+    .btn-mini {
+        @apply text-sm font-normal;
+    }
+
+    .button-cancel {
+        @apply bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600;
     }
 
     input {
+        @apply border border-primary rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-secondary;
+    }
+
+    label {
+        @apply text-secondary text-xl font-bold my-auto
+    }
+
+    select {
         @apply border border-primary rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-secondary;
     }
 }

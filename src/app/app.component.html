@@ -1,12 +1,10 @@
-<div class="w-full h-screen bg-bg flex justify-center flex-col">
-    <div class="w-full p-10">
-        <h1 class="text-center my-auto">Riskuj</h1>
-    </div>    <!--  &lt;!&ndash;start&ndash;&gt;-->
-    <div class="flex justify-center" *ngIf="getState()==='start'">
-        <button (click)="play()" class="bg-secondary">Hrát</button>
+<div class="w-full h-screen  bg-bg flex justify-center flex-col">
+    <div class="flex flex-col justify-center " *ngIf="getState()==='start'">
+        <h1 class="text-center my-auto ">Riskuj</h1>
+        <button (click)="play()" class="btn-main mx-auto my-10">Hrát</button>
     </div>
     <!-- settings -->
-    <div *ngIf="getState()==='settings'">
+    <div class="overflow-scroll" *ngIf="getState()==='settings'">
         <app-riskuj-settings></app-riskuj-settings>
     </div>
     <!-- game -->

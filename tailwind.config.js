@@ -6,11 +6,13 @@ module.exports = {
   theme: {
     colors: {
       'white': '#ffffff',
-      'primary': '#a6720a',
-      'secondary': '#c59925',
-      'bg': '#ecdcd7',
-      'green': '#589f00',
-      'red': '#ff3d00',
+      'primary': '#302D86',
+      'secondary': '#66603E',
+      'bg': '#e8dcb9',
+      'bg-light': '#e0c778',
+      'bg-dark': '#9C8827',
+      'green': '#689a2c',
+      'red': '#b90404',
 
     },
   },
