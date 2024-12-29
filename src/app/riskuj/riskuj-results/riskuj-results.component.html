@@ -1,11 +1,28 @@
 <div>
     <div class="flex flex-col w-96 m-auto text-center">
-        <h4>Pořadí</h4>
-        <div *ngFor="let team of getTeamsOrder(); let index= index"
-             class="m-5 bg-primary">
-            <h3>{{index + 1}}</h3>
-            <h3>{{team.name}}</h3>
-            <h3>{{team.points}}</h3>
+        <div class="m-5">
+            <h1 class="mb-3">Riskuj</h1>
+            <h3>Pořadí</h3>
+        </div>
+        <div *ngFor="let team of getTeamsOrder() | slice:0:3; let index= index"
+             class="m-5">
+            <h3 class="text-primary">{{index + 1}} místo</h3>
+            <div class="m-3 px-5 py-3 rounded-xl"
+                 [ngStyle]="{'background-color': getPlaceColor(index)}">
+                <h3 class="text-white">{{team.name}}</h3>
+                <h3 class="text-white">{{team.points}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="flex w-full justify-center text-center">
+        <div *ngFor="let team of getTeamsOrder() | slice:2:-1; let index= index"
+             class="m-5">
+            <h3 class="text-primary">{{index + 3}} místo</h3>
+            <div class="m-3 px-5 py-3 rounded-xl"
+                 [ngStyle]="{'background-color': getPlaceColor(index+3)}">
+                <h3 class="text-white">{{team.name}}</h3>
+                <h3 class="text-white">{{team.points}}</h3>
+            </div>
         </div>
     </div>
 </div>
