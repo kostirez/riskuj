@@ -1,3 +1,9 @@
+<div>
+    <h2>Riskuj</h2>
+</div>
+<div>
+    <h6>Na řadě je tým: {{teams[getTeamIndexOnTurn()].name}}</h6>
+</div>
 <div class="relative">
     <div class="w-full p-10">
         <div *ngFor="let row of rows"
@@ -18,10 +24,11 @@
     <div class="min-w-[400px]">
         <div class="flex flex-row justify-around">
             <div *ngFor="let team of teams; let index = index"
-                 class=" px-5 py-3 text-center"
-                 [ngClass]=" index == getTeamIndexOnTurn()? 'bg-primary' : 'bg-secondary'">
-                <h5>{{team.name}}</h5>
-                <h5 class="text-secondary">{{team.points}}</h5>
+                 class="px-5 py-3 text-center  rounded-xl"
+                 [ngStyle]="{'background-color': getColor(team.color)}"
+                 [ngClass]=" index == getTeamIndexOnTurn()? 'border-8 border-primary' : 'border-0'">
+                <h5 class="text-white mb-2">{{team.name}}</h5>
+                <h5 class="text-white">{{team.points}}</h5>
             </div>
         </div>
     </div>

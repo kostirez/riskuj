@@ -4,38 +4,7 @@ import { CommonModule } from "@angular/common";
 import { Question, RiskujService, Team } from "../riskuj.service";
 import { FormsModule } from "@angular/forms";
 
-interface Color {
-    label: string;
-    code: string;
-}
 
-const COLORS: Color[] = [
-    {
-        label: 'Červená',
-        code: '#be0000',
-    },
-    {
-        label: 'Modrá',
-        code: '#0036f6',
-    },
-    {
-        label: 'Zelená',
-        code: '#478d1c',
-    },
-    {
-        label: 'Žlutá',
-        code: '#debd00',
-    },
-    {
-        label:  'Fialová',
-        code: '#6f00ff',
-    },
-    {
-        label:  'Oranžová',
-        code: '#d77400',
-    },
-
-]
 
 @Component({
     selector: 'app-riskuj-settings',
@@ -48,7 +17,7 @@ export class RiskujSettingsComponent {
     showData: boolean = false;
     teamName: string = '';
     teamColor: string = '';
-    colors: string[] = COLORS.map(c => c.label);
+    colors: string[] = this.riskujService.getColors().map(c => c.label);
     teams: Team[] = [];
     deduct: false;
     changeAfterLose: false;
@@ -104,11 +73,11 @@ export class RiskujSettingsComponent {
             price: d.cena,
             category: d.kategorie,
         }))
-        this.riskujService.setQuestions(questions)
+        // this.riskujService.setQuestions(questions)
     }
 
     setTeams() {
-        this.riskujService.setTeams(this.teams);
+        // this.riskujService.setTeams(this.teams);
     }
 
     play() {
@@ -120,6 +89,6 @@ export class RiskujSettingsComponent {
     }
 
     getColor(colorLabel: string): string {
-        return COLORS.find(c=>c.label==colorLabel).code;
+        return this.riskujService.getColors().find(c=>c.label==colorLabel).code;
     }
 }

@@ -8,11 +8,11 @@
         <app-riskuj-settings></app-riskuj-settings>
     </div>
     <!-- game -->
-    <div *ngIf="getState()==='game'">
+    <div class="h-full" *ngIf="getState()==='game'">
         <app-riskujgame></app-riskujgame>
     </div>
     <!-- results -->
-    <div *ngIf="getState()==='results'">
-        <app-riskuj-results></app-riskuj-results>
+    <div class="h-full" *ngIf="getState()==='results'">
+        <app-riskuj-results class="h-full"></app-riskuj-results>
     </div>
 </div>

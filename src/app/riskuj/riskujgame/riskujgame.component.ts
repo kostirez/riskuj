@@ -108,4 +108,8 @@ export class RiskujgameComponent {
         }
 
     }
+
+    getColor(colorLabel: string) {
+        return this.riskujService.getColors().find(c=>c.label==colorLabel).code;
+    }
 }

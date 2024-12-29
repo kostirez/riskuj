@@ -20,6 +20,39 @@ export interface Team {
     color: string;
 }
 
+export interface Color {
+    label: string;
+    code: string;
+}
+
+const COLORS: Color[] = [
+    {
+        label: 'Červená',
+        code: '#be0000',
+    },
+    {
+        label: 'Modrá',
+        code: '#0036f6',
+    },
+    {
+        label: 'Zelená',
+        code: '#478d1c',
+    },
+    {
+        label: 'Žlutá',
+        code: '#debd00',
+    },
+    {
+        label: 'Fialová',
+        code: '#6f00ff',
+    },
+    {
+        label: 'Oranžová',
+        code: '#d77400',
+    },
+
+]
+
 @Injectable({
     providedIn: 'root'
 })
@@ -27,67 +60,67 @@ export class RiskujService {
 
     teams: Team[] = [];
     activeTeamIndex: number = 0;
-    state: State = 'start';
+    state: State = 'results';
     deductPoints: boolean = false;
     changeAfterLose: boolean = false;
 
     constructor() {
-        // this.setQuestions([
-        //     {
-        //         question: "otazka 1",
-        //         answers: [ "odpoved 1", "odpoved 2" ],
-        //         price: 100,
-        //         category: "kategorie1",
-        //     },
-        //     {
-        //         question: "otazka 2",
-        //         answers: [ "odpoved 1", "odpoved 2" ],
-        //         price: 200,
-        //         category: "kategorie1",
-        //     },
-        //     {
-        //         question: "otazka 3",
-        //         answers: [ "odpoved 1", "odpoved 2" ],
-        //         price: 300,
-        //         category: "kategorie1",
-        //     },
-        //     {
-        //         question: "otazka 1",
-        //         answers: [ "odpoved 1", "odpoved 2" ],
-        //         price: 100,
-        //         category: "cestovani",
-        //     },
-        //     {
-        //         question: "otazka 2",
-        //         answers: [ "odpoved 1", "odpoved 2" ],
-        //         price: 200,
-        //         category: "cestovani",
-        //     },
-        //     {
-        //         question: "otazka 3",
-        //         answers: [ "odpoved 1" ],
-        //         price: 300,
-        //         category: "cestovani",
-        //     },
-        // ]);
+        this.setQuestions([
+            {
+                question: "otazka 1",
+                answers: [ "odpoved 1", "odpoved 2" ],
+                price: 100,
+                category: "kategorie1",
+            },
+            {
+                question: "otazka 2",
+                answers: [ "odpoved 1", "odpoved 2" ],
+                price: 200,
+                category: "kategorie1",
+            },
+            {
+                question: "otazka 3",
+                answers: [ "odpoved 1", "odpoved 2" ],
+                price: 300,
+                category: "kategorie1",
+            },
+            {
+                question: "otazka 1",
+                answers: [ "odpoved 1", "odpoved 2" ],
+                price: 100,
+                category: "cestovani",
+            },
+            {
+                question: "otazka 2",
+                answers: [ "odpoved 1", "odpoved 2" ],
+                price: 200,
+                category: "cestovani",
+            },
+            {
+                question: "otazka 3",
+                answers: [ "odpoved 1" ],
+                price: 300,
+                category: "cestovani",
+            },
+        ]);
 
-        // this.setTeams([
-        //     {
-        //         name: "team 1",
-        //         points: 0,
-        //         color: "blue"
-        //     },
-        //     {
-        //         name: "team 2",
-        //         points: 0,
-        //         color: "blue"
-        //     },
-        //     {
-        //         name: "team 3",
-        //         points: 0,
-        //         color: "blue"
-        //     },
-        // ])
+        this.setTeams([
+            {
+                name: "team 1",
+                points: 0,
+                color: "Oranžová"
+            },
+            {
+                name: "team 2",
+                points: 0,
+                color: "Zelená"
+            },
+            {
+                name: "team 3",
+                points: 0,
+                color: "Zelená"
+            },
+        ])
     }
 
     settings: RiskujSettings | undefined = undefined;
@@ -105,6 +138,10 @@ export class RiskujService {
         } else {
             this.state = 'game';
         }
+    }
+
+    getColors(): Color[] {
+        return COLORS
     }
 
     public nextTeam() {
@@ -160,7 +197,7 @@ export class RiskujService {
 
 
     end() {
-        this.state ="results";
+        this.state = "results";
     }
 
     setChangingStrategy(changeAfterLose: false) {
