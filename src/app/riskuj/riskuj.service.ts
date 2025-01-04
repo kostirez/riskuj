@@ -60,67 +60,12 @@ export class RiskujService {
 
     teams: Team[] = [];
     activeTeamIndex: number = 0;
-    state: State = 'results';
+    state: State = 'start';
     deductPoints: boolean = false;
     changeAfterLose: boolean = false;
 
     constructor() {
-        this.setQuestions([
-            {
-                question: "otazka 1",
-                answers: [ "odpoved 1", "odpoved 2" ],
-                price: 100,
-                category: "kategorie1",
-            },
-            {
-                question: "otazka 2",
-                answers: [ "odpoved 1", "odpoved 2" ],
-                price: 200,
-                category: "kategorie1",
-            },
-            {
-                question: "otazka 3",
-                answers: [ "odpoved 1", "odpoved 2" ],
-                price: 300,
-                category: "kategorie1",
-            },
-            {
-                question: "otazka 1",
-                answers: [ "odpoved 1", "odpoved 2" ],
-                price: 100,
-                category: "cestovani",
-            },
-            {
-                question: "otazka 2",
-                answers: [ "odpoved 1", "odpoved 2" ],
-                price: 200,
-                category: "cestovani",
-            },
-            {
-                question: "otazka 3",
-                answers: [ "odpoved 1" ],
-                price: 300,
-                category: "cestovani",
-            },
-        ]);
 
-        this.setTeams([
-            {
-                name: "team 1",
-                points: 0,
-                color: "Oranžová"
-            },
-            {
-                name: "team 2",
-                points: 0,
-                color: "Zelená"
-            },
-            {
-                name: "team 3",
-                points: 0,
-                color: "Zelená"
-            },
-        ])
     }
 
     settings: RiskujSettings | undefined = undefined;

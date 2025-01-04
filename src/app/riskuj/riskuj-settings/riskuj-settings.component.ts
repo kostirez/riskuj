@@ -73,11 +73,11 @@ export class RiskujSettingsComponent {
             price: d.cena,
             category: d.kategorie,
         }))
-        // this.riskujService.setQuestions(questions)
+        this.riskujService.setQuestions(questions)
     }
 
     setTeams() {
-        // this.riskujService.setTeams(this.teams);
+        this.riskujService.setTeams(this.teams);
     }
 
     play() {

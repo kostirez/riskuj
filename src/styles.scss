@@ -34,11 +34,11 @@
     }
 
     .btn-main {
-        @apply py-5 px-10 bg-bg-dark text-primary text-2xl font-bold hover:bg-bg-light;
+        @apply py-5 px-10 bg-secondary text-white text-2xl font-bold hover:bg-bg-light hover:text-primary;
     }
 
     .btn-secondary {
-        @apply py-3 px-6 bg-bg-dark text-primary text-xl font-semibold hover:bg-bg-light;
+        @apply py-3 px-6 bg-bg-dark text-white text-xl font-semibold hover:bg-bg-light;
     }
 
     .btn-mini {
