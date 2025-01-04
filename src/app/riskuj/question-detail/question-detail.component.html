@@ -1,24 +1,25 @@
-<div *ngIf="question" class="relative h-full w-full bg-white">
-    <div class=" flex justify-around">
-
-        <p class="m-20 text-primary">{{question.question}}</p>
-
+<div *ngIf="question" class="relative flex flex-col justify-around h-full w-full bg-bg-dark rounded-xl">
+    <div class="text-center ">
+        <h3 class="pt-5 text-secondary">{{question.category}}</h3>
+        <h2 class="pt-5 text-secondary">Otázka za {{question.price}}</h2>
+        <h2 class="mt-20 text-primary">{{question.question}}</h2>
     </div>
-    <div *ngIf="!multipleChoice" class="mt-10 flex justify-around">
-        <button *ngIf="!showAnswer" class="px-5 py-3 bg-primary text-white" (click)="showAnswer=true">odhalit odpoved</button>
+    <div *ngIf="!multipleChoice" class="flex justify-around">
+        <button *ngIf="!showAnswer" class="px-5 py-3 bg-primary text-white" (click)="showAnswer=true">odhalit odpoved
+        </button>
         <div *ngIf="showAnswer">
-            <div class="px-5 py-3 bg-secondary text-white">{{question.answers[0]}}</div>
+            <div class="px-5 py-3 bg-secondary text-white text-center text-xl rounded-lg">{{question.answers[0]}}</div>
             <div class="w-64 flex justify-around ">
                 <button (click)="rightAnswer()" class="px-5 py-3  bg-green">spravne</button>
                 <button (click)="wrongAnswer()" class="px-5 py-3  bg-red">spatne</button>
             </div>
         </div>
     </div>
-    <div *ngIf="multipleChoice" class="mt-10 flex justify-around">
+    <div *ngIf="multipleChoice" class=" flex justify-around">
         <div *ngFor="let ans of question.answers"
-             class="px-5 py-3 bg-secondary text-white">
+             class="px-5 py-3 bg-secondary text-white text-center text-xl">
             {{ans}}
         </div>
     </div>
-    <div class="absolute top-3 left-3" (click)="closeQuestion()">zavrit</div>
+    <div class="absolute top-3 left-3 bg-red px-5 py-2 rounded-lg m-1 cursor-pointer" (click)="closeQuestion()">zavřít otázku</div>
 </div>

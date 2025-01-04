@@ -44,7 +44,7 @@ const COLORS: Color[] = [
     },
     {
         label: 'Fialová',
-        code: '#6f00ff',
+        code: '#8600c9',
     },
     {
         label: 'Oranžová',
