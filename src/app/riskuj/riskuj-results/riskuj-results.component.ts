@@ -40,7 +40,7 @@ export class RiskujResultsComponent {
     }
 
     getTeamsOrder(): Team[] {
-        return this.teams.sort((t1, t2) => t1.points - t2.points);
+        return this.teams.sort((t1, t2) => t1.points - t2.points).reverse();
     }
 
     getPlaceColor(index: number): string {
