@@ -1,22 +1,24 @@
-<div>
-    <h2>Riskuj</h2>
-</div>
-<div>
-    <h6>Na řadě je tým: {{teams[getTeamIndexOnTurn()].name}}</h6>
+<div class="text-center m-5">
+    <div>
+        <h2>Riskuj</h2>
+    </div>
+    <div class="mt-10">
+        <h4>Na řadě je tým: <h3>{{teams[getTeamIndexOnTurn()].name}}</h3></h4>
+    </div>
 </div>
 <div class="relative">
     <div class="w-full p-10">
         <div *ngFor="let row of rows"
-             class="flex flex-row w-full h-40 justify-between bg-primary text-white gap-5 mt-5">
+             class="flex flex-row w-full h-40 justify-between bg-primary text-white gap-2 mt-2 px-2 rounded-lg">
             <div class="flex flex-col">
-                <h3 class="w-[300px] text-center text-xl my-auto">{{row.category}}</h3>
+                <h3 class="w-[300px] text-white text-center text-2xl my-auto">{{row.category}}</h3>
             </div>
             <div *ngFor="let box of row.questionBoxes"
                  (click)="clickQuestion(row.category, box)"
-                 class="flex flex-col w-full bg-secondary text-white cursor-pointer">
-                <div class="my-auto bg-secondary text-center text-2xl"
-                     [ngClass]="box.status == 'done' ? 'bg-white' : 'bg-secondary'"
-                >{{box.price}}</div>
+                 class="flex flex-col w-full bg-bg-light text-white  shadow-lg my-2 rounded-lg"
+                 [ngClass]="box.status == 'done' ? 'bg-primary cursor-cancel' : 'bg-open cursor-pointer'">
+                <div class="my-auto text-center text-4xl"
+                >{{box.status == 'done' ? '': box.price}}</div>
             </div>
         </div>
     </div>
